@@ -18,6 +18,7 @@ import org.bukkit.event.entity.EntityTransformEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.potion.PotionEffectType;
 import org.yuemi.villagertweaks.VillagerTweaksPlugin;
+import org.yuemi.villagertweaks.util.EntityUtil;
 
 public final class ZombieVillagerListener implements Listener {
 
@@ -116,11 +117,8 @@ public final class ZombieVillagerListener implements Listener {
         // Spawn Zombie Villager
         var zombieVillager = (ZombieVillager) world.spawnEntity(loc, EntityType.ZOMBIE_VILLAGER);
 
-        // Copy custom name
-        if (villager.customName() != null) {
-            zombieVillager.customName(villager.customName());
-            zombieVillager.setCustomNameVisible(villager.isCustomNameVisible());
-        }
+        // Copy attributes, metadata, tags, PDC from source villager
+        EntityUtil.copyAttributes(villager, zombieVillager);
 
         // Copy profession and biome type
         zombieVillager.setVillagerProfession(villager.getProfession());

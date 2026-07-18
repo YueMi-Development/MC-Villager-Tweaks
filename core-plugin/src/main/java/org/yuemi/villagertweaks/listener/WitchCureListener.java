@@ -17,6 +17,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.yuemi.villagertweaks.VillagerTweaksPlugin;
+import org.yuemi.villagertweaks.util.EntityUtil;
 
 public final class WitchCureListener implements Listener {
 
@@ -139,10 +140,7 @@ public final class WitchCureListener implements Listener {
 
         var villager = (Villager) world.spawnEntity(loc, EntityType.VILLAGER);
 
-        if (witch.customName() != null) {
-            villager.customName(witch.customName());
-            villager.setCustomNameVisible(witch.isCustomNameVisible());
-        }
+        EntityUtil.copyAttributes(witch, villager);
 
         var config = plugin.getConfig();
         if (config.getBoolean("witch-curing.enable-sound", true)) {
