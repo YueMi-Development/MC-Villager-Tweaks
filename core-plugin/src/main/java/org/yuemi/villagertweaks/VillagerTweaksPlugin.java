@@ -8,6 +8,7 @@ import org.yuemi.villagertweaks.commands.CommandHandler;
 import org.yuemi.villagertweaks.config.ConfigManager;
 import org.yuemi.villagertweaks.listener.WitchCureListener;
 import org.yuemi.villagertweaks.listener.ZombieVillagerListener;
+import org.yuemi.villagertweaks.bstats.BStatsService;
 
 public final class VillagerTweaksPlugin extends JavaPlugin {
 
@@ -18,6 +19,7 @@ public final class VillagerTweaksPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        BStatsService.initialize(this);
         // Initialize and load configuration migrations
         new ConfigManager(this).loadAndMigrate();
 

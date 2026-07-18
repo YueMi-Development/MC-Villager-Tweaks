@@ -5,6 +5,8 @@ authors: [${authors}]
 contributors: [${contributors}]
 api-version: '${apiVersion}'
 
+bstats-id: '${bstatsPluginId}'
+
 commands:
   villagertweaks:
     description: Main command for VillagerTweaks.
