@@ -4,6 +4,7 @@ import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.yuemi.villagertweaks.api.VillagerTweaksApi;
 import org.yuemi.villagertweaks.api.VillagerTweaksApiProvider;
+import org.yuemi.villagertweaks.commands.CommandHandler;
 import org.yuemi.villagertweaks.config.ConfigManager;
 import org.yuemi.villagertweaks.listener.WitchCureListener;
 
@@ -42,6 +43,14 @@ public final class VillagerTweaksPlugin extends JavaPlugin {
         this.witchCureListener = new WitchCureListener(this);
         getServer().getPluginManager().registerEvents(witchCureListener, this);
 
+        // Register commands
+        CommandHandler commandHandler = new CommandHandler(this);
+        var cmd = getCommand("villagertweaks");
+        if (cmd != null) {
+            cmd.setExecutor(commandHandler);
+            cmd.setTabCompleter(commandHandler);
+        }
+
         getLogger().info("VillagerTweaks has been successfully enabled!");
     }
 
@@ -63,5 +72,21 @@ public final class VillagerTweaksPlugin extends JavaPlugin {
         }
 
         getLogger().info("VillagerTweaks has been disabled.");
+    }
+
+    /**
+     * Reloads the plugin configuration.
+     */
+    public boolean reloadPlugin() {
+        reloadConfig();
+        boolean newTweaksEnabled = getConfig().getBoolean("enable-tweaks", true);
+        boolean changed = newTweaksEnabled != this.tweaksEnabled;
+        if (changed) {
+            getLogger().warning("The 'enable-tweaks' setting has changed. A server restart is required to toggle plugin features globally.");
+        }
+
+        // Re-run configuration migrations if any upgrades occurred
+        new ConfigManager(this).loadAndMigrate();
+        return changed;
     }
 }

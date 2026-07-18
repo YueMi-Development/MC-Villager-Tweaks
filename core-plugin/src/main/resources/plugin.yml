@@ -4,3 +4,18 @@ main: org.yuemi.villagertweaks.VillagerTweaksPlugin
 authors: [${authors}]
 contributors: [${contributors}]
 api-version: '${apiVersion}'
+
+commands:
+  villagertweaks:
+    description: Main command for VillagerTweaks.
+    aliases: [vt]
+    permission: villagertweaks.command.use
+    permission-message: You do not have permission to use this command!
+
+permissions:
+  villagertweaks.command.use:
+    description: Allows using the main command.
+    default: true
+  villagertweaks.command.reload:
+    description: Allows reloading the configuration.
+    default: op
