@@ -1,6 +1,7 @@
 package org.yuemi.villagertweaks.util;
 
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 
 public final class EntityUtil {
 
@@ -39,5 +40,25 @@ public final class EntityUtil {
         target.setTicksLived(source.getTicksLived());
         target.setVisualFire(source.isVisualFire());
         target.setInvulnerable(source.isInvulnerable());
+
+        // Copy equipment if both are living entities
+        if (source instanceof LivingEntity sourceLiving && target instanceof LivingEntity targetLiving) {
+            var sourceEquip = sourceLiving.getEquipment();
+            var targetEquip = targetLiving.getEquipment();
+            if (sourceEquip != null && targetEquip != null) {
+                targetEquip.setItemInMainHand(sourceEquip.getItemInMainHand());
+                targetEquip.setItemInMainHandDropChance(sourceEquip.getItemInMainHandDropChance());
+                targetEquip.setItemInOffHand(sourceEquip.getItemInOffHand());
+                targetEquip.setItemInOffHandDropChance(sourceEquip.getItemInOffHandDropChance());
+                targetEquip.setHelmet(sourceEquip.getHelmet());
+                targetEquip.setHelmetDropChance(sourceEquip.getHelmetDropChance());
+                targetEquip.setChestplate(sourceEquip.getChestplate());
+                targetEquip.setChestplateDropChance(sourceEquip.getChestplateDropChance());
+                targetEquip.setLeggings(sourceEquip.getLeggings());
+                targetEquip.setLeggingsDropChance(sourceEquip.getLeggingsDropChance());
+                targetEquip.setBoots(sourceEquip.getBoots());
+                targetEquip.setBootsDropChance(sourceEquip.getBootsDropChance());
+            }
+        }
     }
 }
