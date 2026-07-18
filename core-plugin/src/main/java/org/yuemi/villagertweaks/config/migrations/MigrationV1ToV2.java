@@ -9,5 +9,9 @@ public final class MigrationV1ToV2 implements ConfigMigration {
     @Override
     public void migrate(FileConfiguration config) {
         // Add new config setting
+        config.set("enable-witch-curing", true);
+        config.setComments("enable-witch-curing", List.of(
+                "Enable or disable curing Witches into Villagers using weakness potion and golden apple."
+        ));
     }
 }

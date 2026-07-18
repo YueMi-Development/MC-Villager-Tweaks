@@ -1,6 +1,9 @@
 # VillagerTweaks Configuration
 # Do not change this unless you know what you are doing.
-config-version: 1
+config-version: 2
 
-# Enable or disable the plugin features.
+# Enable or disable the plugin features requires restart.
 enable-tweaks: true
+
+# Enable or disable curing Witches into Villagers using weakness potion and golden apple.
+enable-witch-curing: true

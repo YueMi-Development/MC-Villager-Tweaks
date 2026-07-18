@@ -5,15 +5,25 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.yuemi.villagertweaks.api.VillagerTweaksApi;
 import org.yuemi.villagertweaks.api.VillagerTweaksApiProvider;
 import org.yuemi.villagertweaks.config.ConfigManager;
+import org.yuemi.villagertweaks.listener.WitchCureListener;
 
 public final class VillagerTweaksPlugin extends JavaPlugin {
 
     private VillagerTweaksApi api;
+    private WitchCureListener witchCureListener;
+    private boolean tweaksEnabled;
 
     @Override
     public void onEnable() {
         // Initialize and load configuration migrations
         new ConfigManager(this).loadAndMigrate();
+
+        this.tweaksEnabled = getConfig().getBoolean("enable-tweaks", true);
+
+        if (!tweaksEnabled) {
+            getLogger().info("VillagerTweaks is disabled globally via configuration.");
+            return;
+        }
 
         this.api = new VillagerTweaksApiImpl();
 
@@ -28,16 +38,29 @@ public final class VillagerTweaksPlugin extends JavaPlugin {
         // Register to public provider entry point
         VillagerTweaksApiProvider.register(this.api);
 
+        // Register gameplay listeners
+        this.witchCureListener = new WitchCureListener(this);
+        getServer().getPluginManager().registerEvents(witchCureListener, this);
+
         getLogger().info("VillagerTweaks has been successfully enabled!");
     }
 
     @Override
     public void onDisable() {
-        // Unregister from services
-        getServer().getServicesManager().unregister(VillagerTweaksApi.class, this.api);
+        if (!tweaksEnabled) {
+            return;
+        }
 
-        // Unregister from provider
-        VillagerTweaksApiProvider.unregister();
+        // Cancel any active tasks
+        if (this.witchCureListener != null) {
+            this.witchCureListener.cancelAll();
+        }
+
+        // Unregister from services
+        if (this.api != null) {
+            getServer().getServicesManager().unregister(VillagerTweaksApi.class, this.api);
+            VillagerTweaksApiProvider.unregister();
+        }
 
         getLogger().info("VillagerTweaks has been disabled.");
     }
