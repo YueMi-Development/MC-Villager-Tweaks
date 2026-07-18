@@ -7,11 +7,13 @@ import org.yuemi.villagertweaks.api.VillagerTweaksApiProvider;
 import org.yuemi.villagertweaks.commands.CommandHandler;
 import org.yuemi.villagertweaks.config.ConfigManager;
 import org.yuemi.villagertweaks.listener.WitchCureListener;
+import org.yuemi.villagertweaks.listener.ZombieVillagerListener;
 
 public final class VillagerTweaksPlugin extends JavaPlugin {
 
     private VillagerTweaksApi api;
     private WitchCureListener witchCureListener;
+    private ZombieVillagerListener zombieVillagerListener;
     private boolean tweaksEnabled;
 
     @Override
@@ -42,6 +44,9 @@ public final class VillagerTweaksPlugin extends JavaPlugin {
         // Register gameplay listeners
         this.witchCureListener = new WitchCureListener(this);
         getServer().getPluginManager().registerEvents(witchCureListener, this);
+
+        this.zombieVillagerListener = new ZombieVillagerListener(this);
+        getServer().getPluginManager().registerEvents(zombieVillagerListener, this);
 
         // Register commands
         CommandHandler commandHandler = new CommandHandler(this);

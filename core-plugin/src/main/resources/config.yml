@@ -1,6 +1,6 @@
 # VillagerTweaks Configuration
 # Do not change this unless you know what you are doing.
-config-version: 3
+config-version: 4
 
 # Enable or disable the plugin features requires restart.
 enable-tweaks: true
@@ -11,3 +11,9 @@ witch-curing:
   cure-time: 60
   enable-particles: true
   enable-sound: true
+
+zombie-villagers:
+  # vanilla, always-zombie, random, none
+  infection-type: vanilla
+  allow-curing: true
+  

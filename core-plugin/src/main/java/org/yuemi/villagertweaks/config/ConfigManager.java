@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class ConfigManager {
 
     private final JavaPlugin plugin;
-    private static final int LATEST_VERSION = 3;
+    private static final int LATEST_VERSION = 4;
     private static final String MIGRATION_PACKAGE = "org.yuemi.villagertweaks.config.migrations";
 
     public ConfigManager(JavaPlugin plugin) {
