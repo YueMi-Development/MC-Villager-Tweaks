@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"org.yuemi.villagertweaks.api","c":"VillagerTweaksApiProvider","l":"get()"},{"p":"org.yuemi.villagertweaks.api","c":"VillagerTweaksApiProvider","l":"register(VillagerTweaksApi)","u":"register(org.yuemi.villagertweaks.api.VillagerTweaksApi)"},{"p":"org.yuemi.villagertweaks.api","c":"VillagerTweaksApiProvider","l":"unregister()"}];updateSearchResults();
