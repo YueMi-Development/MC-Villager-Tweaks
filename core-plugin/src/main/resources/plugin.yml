@@ -1,6 +1,6 @@
 name: '${pluginName}'
 version: '${version}'
-main: org.yuemi.villagertweaks.VillagerTweaksPlugin
+main: org.yuemi.villagertweaks.plugin.VillagerTweaksPlugin
 authors: [${authors}]
 contributors: [${contributors}]
 api-version: '${apiVersion}'

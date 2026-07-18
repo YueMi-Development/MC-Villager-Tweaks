@@ -1,4 +1,4 @@
-package org.yuemi.villagertweaks;
+package org.yuemi.villagertweaks.plugin;
 
 import org.yuemi.villagertweaks.api.VillagerTweaksApi;
 

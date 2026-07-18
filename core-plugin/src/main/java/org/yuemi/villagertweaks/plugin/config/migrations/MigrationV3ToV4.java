@@ -1,8 +1,8 @@
-package org.yuemi.villagertweaks.config.migrations;
+package org.yuemi.villagertweaks.plugin.config.migrations;
 
 import java.util.List;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.yuemi.villagertweaks.config.ConfigMigration;
+import org.yuemi.villagertweaks.plugin.config.ConfigMigration;
 
 public final class MigrationV3ToV4 implements ConfigMigration {
 

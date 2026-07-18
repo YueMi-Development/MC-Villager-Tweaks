@@ -1,4 +1,4 @@
-package org.yuemi.villagertweaks.util;
+package org.yuemi.villagertweaks.plugin.util;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;

@@ -1,4 +1,4 @@
-package org.yuemi.villagertweaks.commands;
+package org.yuemi.villagertweaks.plugin.commands;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,9 +13,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.yuemi.villagertweaks.VillagerTweaksPlugin;
-import org.yuemi.villagertweaks.commands.commands.HelpCommand;
-import org.yuemi.villagertweaks.commands.commands.ReloadCommand;
+import org.yuemi.villagertweaks.plugin.VillagerTweaksPlugin;
+import org.yuemi.villagertweaks.plugin.commands.commands.HelpCommand;
+import org.yuemi.villagertweaks.plugin.commands.commands.ReloadCommand;
 
 public final class CommandHandler implements CommandExecutor, TabCompleter {
 

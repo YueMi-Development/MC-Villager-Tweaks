@@ -1,4 +1,4 @@
-package org.yuemi.villagertweaks.bstats;
+package org.yuemi.villagertweaks.plugin.bstats;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;

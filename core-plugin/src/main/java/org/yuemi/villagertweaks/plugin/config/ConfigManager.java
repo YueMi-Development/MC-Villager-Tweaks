@@ -1,4 +1,4 @@
-package org.yuemi.villagertweaks.config;
+package org.yuemi.villagertweaks.plugin.config;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;

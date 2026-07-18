@@ -1,4 +1,4 @@
-package org.yuemi.villagertweaks.listener;
+package org.yuemi.villagertweaks.plugin.listener;
 
 import java.util.Collections;
 import java.util.Set;
@@ -17,8 +17,8 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityTransformEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.potion.PotionEffectType;
-import org.yuemi.villagertweaks.VillagerTweaksPlugin;
-import org.yuemi.villagertweaks.util.EntityUtil;
+import org.yuemi.villagertweaks.plugin.VillagerTweaksPlugin;
+import org.yuemi.villagertweaks.plugin.util.EntityUtil;
 
 public final class ZombieVillagerListener implements Listener {
 

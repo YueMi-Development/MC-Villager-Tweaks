@@ -1,12 +1,12 @@
-package org.yuemi.villagertweaks.commands.commands;
+package org.yuemi.villagertweaks.plugin.commands.commands;
 
 import java.util.ArrayList;
 import java.util.List;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.CommandSender;
-import org.yuemi.villagertweaks.commands.Command;
-import org.yuemi.villagertweaks.commands.CommandHandler;
+import org.yuemi.villagertweaks.plugin.commands.Command;
+import org.yuemi.villagertweaks.plugin.commands.CommandHandler;
 
 public final class HelpCommand extends Command {
 

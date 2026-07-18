@@ -1,4 +1,4 @@
-package org.yuemi.villagertweaks.commands;
+package org.yuemi.villagertweaks.plugin.commands;
 
 import java.util.List;
 import org.bukkit.command.CommandSender;

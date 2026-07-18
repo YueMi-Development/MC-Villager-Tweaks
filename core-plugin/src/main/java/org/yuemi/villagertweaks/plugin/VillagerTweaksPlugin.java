@@ -1,14 +1,14 @@
-package org.yuemi.villagertweaks;
+package org.yuemi.villagertweaks.plugin;
 
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.yuemi.villagertweaks.api.VillagerTweaksApi;
 import org.yuemi.villagertweaks.api.VillagerTweaksApiProvider;
-import org.yuemi.villagertweaks.commands.CommandHandler;
-import org.yuemi.villagertweaks.config.ConfigManager;
-import org.yuemi.villagertweaks.listener.WitchCureListener;
-import org.yuemi.villagertweaks.listener.ZombieVillagerListener;
-import org.yuemi.villagertweaks.bstats.BStatsService;
+import org.yuemi.villagertweaks.plugin.commands.CommandHandler;
+import org.yuemi.villagertweaks.plugin.config.ConfigManager;
+import org.yuemi.villagertweaks.plugin.listener.WitchCureListener;
+import org.yuemi.villagertweaks.plugin.listener.ZombieVillagerListener;
+import org.yuemi.villagertweaks.plugin.bstats.BStatsService;
 
 public final class VillagerTweaksPlugin extends JavaPlugin {
 
