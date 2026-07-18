@@ -41,7 +41,7 @@ public final class WitchCureListener implements Listener {
         }
 
         var config = plugin.getConfig();
-        if (!config.getBoolean("enable-witch-curing", true)) {
+        if (!config.getBoolean("witch-curing.enable", true)) {
             return;
         }
 
@@ -97,10 +97,11 @@ public final class WitchCureListener implements Listener {
 
     private final class WitchCureTask extends BukkitRunnable {
         private final Witch witch;
-        private int secondsRemaining = 60;
+        private int secondsRemaining;
 
         public WitchCureTask(Witch witch) {
             this.witch = witch;
+            this.secondsRemaining = plugin.getConfig().getInt("witch-curing.cure-time", 60);
         }
 
         @Override
@@ -111,10 +112,16 @@ public final class WitchCureListener implements Listener {
             }
 
             var loc = witch.getLocation();
-            loc.getWorld().spawnParticle(Particle.WITCH, loc.clone().add(0, 1, 0), 5, 0.25, 0.5, 0.25, 0.05);
+            var config = plugin.getConfig();
 
-            if (secondsRemaining % 10 == 0 || secondsRemaining == 60) {
-                loc.getWorld().playSound(loc, Sound.ENTITY_ZOMBIE_VILLAGER_CURE, 1.0f, 0.8f + (float) Math.random() * 0.4f);
+            if (config.getBoolean("witch-curing.enable-particles", true)) {
+                loc.getWorld().spawnParticle(Particle.WITCH, loc.clone().add(0, 1, 0), 5, 0.25, 0.5, 0.25, 0.05);
+            }
+
+            if (config.getBoolean("witch-curing.enable-sound", true)) {
+                if (secondsRemaining % 10 == 0) {
+                    loc.getWorld().playSound(loc, Sound.ENTITY_ZOMBIE_VILLAGER_CURE, 1.0f, 0.8f + (float) Math.random() * 0.4f);
+                }
             }
 
             secondsRemaining--;
@@ -137,8 +144,13 @@ public final class WitchCureListener implements Listener {
             villager.setCustomNameVisible(witch.isCustomNameVisible());
         }
 
-        world.playSound(loc, Sound.ENTITY_ZOMBIE_VILLAGER_CONVERTED, 1.0f, 1.0f);
-        world.spawnParticle(Particle.HAPPY_VILLAGER, loc.clone().add(0, 1, 0), 20, 0.5, 1.0, 0.5, 0.1);
+        var config = plugin.getConfig();
+        if (config.getBoolean("witch-curing.enable-sound", true)) {
+            world.playSound(loc, Sound.ENTITY_ZOMBIE_VILLAGER_CONVERTED, 1.0f, 1.0f);
+        }
+        if (config.getBoolean("witch-curing.enable-particles", true)) {
+            world.spawnParticle(Particle.HAPPY_VILLAGER, loc.clone().add(0, 1, 0), 20, 0.5, 1.0, 0.5, 0.1);
+        }
 
         witch.remove();
     }
