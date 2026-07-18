@@ -5,7 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.yuemi.villagertweaks.api.VillagerTweaksApi;
 import org.yuemi.villagertweaks.api.VillagerTweaksApiProvider;
 import org.yuemi.villagertweaks.plugin.commands.CommandHandler;
-import org.yuemi.villagertweaks.plugin.config.ConfigManager;
+import org.yuemi.config.api.ConfigManager;
 import org.yuemi.villagertweaks.plugin.listener.WitchCureListener;
 import org.yuemi.villagertweaks.plugin.listener.ZombieVillagerListener;
 import org.yuemi.villagertweaks.plugin.bstats.BStatsService;
@@ -21,7 +21,7 @@ public final class VillagerTweaksPlugin extends JavaPlugin {
     public void onEnable() {
         BStatsService.initialize(this);
         // Initialize and load configuration migrations
-        new ConfigManager(this).loadAndMigrate();
+        new ConfigManager(this, "org.yuemi.villagertweaks.plugin.config.migrations").loadAndMigrate(this);
 
         this.tweaksEnabled = getConfig().getBoolean("enable-tweaks", true);
 
@@ -93,7 +93,7 @@ public final class VillagerTweaksPlugin extends JavaPlugin {
         }
 
         // Re-run configuration migrations if any upgrades occurred
-        new ConfigManager(this).loadAndMigrate();
+        new ConfigManager(this, "org.yuemi.villagertweaks.plugin.config.migrations").loadAndMigrate(this);
         return changed;
     }
 }

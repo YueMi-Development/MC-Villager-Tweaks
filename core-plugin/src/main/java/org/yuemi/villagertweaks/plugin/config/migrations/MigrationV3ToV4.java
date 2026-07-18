@@ -2,12 +2,18 @@ package org.yuemi.villagertweaks.plugin.config.migrations;
 
 import java.util.List;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.yuemi.villagertweaks.plugin.config.ConfigMigration;
+import org.jetbrains.annotations.NotNull;
+import org.yuemi.config.api.MigrationStep;
 
-public final class MigrationV3ToV4 implements ConfigMigration {
+public final class MigrationV3ToV4 implements MigrationStep {
 
     @Override
-    public void migrate(FileConfiguration config) {
+    public int getTargetVersion() {
+        return 4;
+    }
+
+    @Override
+    public void migrate(@NotNull FileConfiguration config) {
         // Set new settings for zombie villager tweaks
         config.set("zombie-villagers.infection-type", "vanilla");
         config.set("zombie-villagers.allow-curing", true);
