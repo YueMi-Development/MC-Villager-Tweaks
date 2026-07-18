@@ -4,6 +4,7 @@ import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.yuemi.villagertweaks.api.VillagerTweaksApi;
 import org.yuemi.villagertweaks.api.VillagerTweaksApiProvider;
+import org.yuemi.villagertweaks.config.ConfigManager;
 
 public final class VillagerTweaksPlugin extends JavaPlugin {
 
@@ -11,6 +12,9 @@ public final class VillagerTweaksPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        // Initialize and load configuration migrations
+        new ConfigManager(this).loadAndMigrate();
+
         this.api = new VillagerTweaksApiImpl();
 
         // Register to Bukkit ServicesManager

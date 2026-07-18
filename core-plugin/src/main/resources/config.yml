@@ -1,0 +1,6 @@
+# VillagerTweaks Configuration
+# Do not change this unless you know what you are doing.
+config-version: 1
+
+# Enable or disable the plugin features.
+enable-tweaks: true
